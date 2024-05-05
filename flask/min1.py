@@ -24,7 +24,7 @@ def username_exists(username):
 # Route to handle the login page
 @app.route('/')
 def login():
-    return render_template("login.html")
+    return render_template("index.html")
 
 # Route to handle the form submission for login
 @app.route("/login", methods=['POST'])
