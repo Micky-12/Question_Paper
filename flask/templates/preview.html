@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Question Paper</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='preview.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>Generate Question Paper</h2>
+            <form method="POST" action="/preview">
+                <div class="input-box">
+                    <input type="text" id="subject_code" name="subject_code" placeholder="Enter subject code" required>
+                    <i class='bx bx-barcode'></i>  
+                </div>
+                <div class="input-box">
+                    <input type="text" id="subject" name="subject" placeholder="Enter subject name" required>
+                    <i class='bx bx-book'></i>
+                </div>
+                <div class="input-box">
+                    <input type="number" id="total_marks" name="total_marks" placeholder="Enter total marks" required>
+                    <i class='bx bx-line-chart'></i>
+                </div>
+                <div class="input-box">
+                    <input type="number" id="current_cgpa" name="current_cgpa" placeholder="Enter current_cgpa" required>
+                    <i class='bx bx-line-chart'></i>
+                </div>
+                <button type="submit">Generate Preview</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Preview</h2>
+            {% if pdf_file_url %}
+            <iframe src="{{ pdf_file_url }}" width="100%" height="600px"></iframe>
+            <br>
+            <a href="{{ url_for('download_pdf', pdf_file=pdf_file_url) }}">Download Question Paper</a>
+            {% endif %}
+            
+            {% if error_message %}
+            <p>Error: {{ error_message }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

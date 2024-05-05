@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Uploader</title>
+  <link rel="stylesheet" href="\static\login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <div class="wrapper" id="drop-area">
+    <header>File Uploader</header>
+    <div id="drop-area" ondragover="allowDrop(event)" ondrop="drop(event)">
+      <p>Drag and drop a file here or click to select one</p>
+      <input class="file-input" type="file" name="file" id="file" onchange="handleFiles(this.files)" required>
+      <i class="fas fa-cloud-upload-alt"></i>
+      <p>Browse File to Upload</p>
+      <button onclick="uploadFile()">Upload</button>
+    </div>
+    <section class="progress-area"></section>
+    <section class="uploaded-area"></section>
+  </div>
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+  
+    function drop(event) {
+      event.preventDefault();
+      const files = event.dataTransfer.files;
+      handleFiles(files);
+    }
+  
+    function handleFiles(files) {
+      const file = files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+  
+      // Now you can use AJAX to upload the file or any other method you prefer
+      // Example using fetch API:
+      fetch('/uploadfile', {  // Change '/upload' to '/uploadfile'
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log(result); // Log the result or update UI accordingly
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  
+    function uploadFile() {
+      const inputElement = document.getElementById('file');
+      const file = inputElement.files[0];
+  
+      const formData = new FormData();
+      formData.append('file', file);
+  
+      fetch('/uploadfile', {  // Change '/upload' to '/uploadfile'
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/fileuploader'; // Redirect to the fileuploader route after successful upload;
+        } else {
+          console.error('Error:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+</script>
+</body>
+</html>

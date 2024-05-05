@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Paper Generator</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header>Question Paper Generator</header>
+    <div class="button-container">
+      <button class="big-button" onclick="generateQuestionPaper()">Generate Question Paper</button>
+      <button class="big-button" onclick="uploadQuestionPaper()">Upload Question Paper</button>
+    </div>
+  </div>
+
+  <script>
+    function generateQuestionPaper() {
+      window.location.href = "{{ url_for('preview') }}";
+    }
+
+    function uploadQuestionPaper() {
+      window.location.href = "{{ url_for('uploadfile') }}";
+    }
+  </script>
+</body>
+</html>

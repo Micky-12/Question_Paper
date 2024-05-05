@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Papers</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('840294-wallpaper-of-study.jpg') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .wrapper {
+            width: 960px;
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(25px);
+            color:white ;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .filters {
+            width: 25%;
+            margin-right: 20px;
+        }
+        .search-results {
+            width: 75%;
+        }
+        .search-results p {
+            padding : 20px;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .filter-section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .filter-section select {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
+            color: black;
+            border: 2px solid rgba(255, 255, 255, 0.5); /* White border */
+            border-radius: 20px;
+            font-size: 16px;
+            padding: 10px 20px;
+            margin-bottom: 15px;
+            -webkit-appearance: none; /* Removes default styling on Webkit browsers */
+            -moz-appearance: none; /* Removes default styling on Firefox browsers */
+            appearance: none; /* Removes default styling */
+        }
+        .filter-section::after {
+            content: '\25BC';
+            font-family: 'Boxicons'; /* Ensures the arrow uses the same font */
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            color: white;
+            pointer-events: none;
+        }
+        .search-bar {
+            position: relative;
+        }
+        .search-bar input {
+            padding-right: 45px;
+            width: 100%;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 16px;
+            color:white ;
+            padding: 10px 20px;
+        }
+        .search-bar input::placeholder {
+            color: black;
+        }
+        .search-bar i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color:white ;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="filters">
+            <div class="filter-section">
+                <label for="difficulty">Difficulty</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <div class="filter-section">
+                <label for="year">Year</label>
+                <select id="year">
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+            </div>
+            <div class="filter-section">
+                <label for="subject">Subject</label>
+                <select id="subject">
+                    <option value="CD">Compiler Design</option>
+                    <option value="ML">Machine Learning</option>
+                    <option value="AAD">Algorithm Analysis and Design </option>
+                </select>
+            </div>
+        </div>
+        <div class="search-results">
+            <div class="search-bar">
+                <input type="text" placeholder="Search test papers..." aria-label="Search">
+                <i class='bx bx-search'></i>
+            </div>
+            <div id="results">
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>
